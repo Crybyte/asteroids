@@ -2,6 +2,7 @@
 # the open-source pygame library
 # throughout this file
 import pygame
+from player import Player
 
 from constants import *
 
@@ -17,12 +18,21 @@ def main():
     myCounter = pygame.time.Clock()
     dt = 0
 
+    x = SCREEN_WIDTH / 2
+    y = SCREEN_HEIGHT / 2
+
+    print(f"Spawning Player at ({x},{y})")
+    newPlayer = Player(x, y)
+
     while (True):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
 
         screen.fill("black")
+
+        newPlayer.draw(screen)
+
         pygame.display.flip()
 
         dt = myCounter.tick(60) / 1000
