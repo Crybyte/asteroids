@@ -3,6 +3,8 @@
 # throughout this file
 import pygame
 from player import Player
+from asteroid import Asteroid
+from asteroidfield import AsteroidField
 
 from constants import *
 
@@ -24,11 +26,16 @@ def main():
     # Create Groups before Player
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
+    asteroids = pygame.sprite.Group()
 
     Player.containers = (updatable, drawable)
+    Asteroid.containers = (updatable, drawable, asteroids)
+    AsteroidField.containers = (updatable)
     
     print(f"Spawning Player at: ({x}, {y})")
     newPlayer = Player(x, y)
+
+    newAsteroidField = AsteroidField()
 
     #newPlayer.containers = (updatable, drawable)
 
