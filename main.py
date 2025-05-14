@@ -51,6 +51,11 @@ def main():
 
         updatable.update(dt)
 
+        for rock in asteroids:
+            if rock.isBumping(newPlayer):
+                print("Game over!")
+                exit()
+
         for item in drawable:
             item.draw(screen)
 
