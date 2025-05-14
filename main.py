@@ -21,8 +21,16 @@ def main():
     x = SCREEN_WIDTH / 2
     y = SCREEN_HEIGHT / 2
 
-    print(f"Spawning Player at ({x},{y})")
+    # Create Groups before Player
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+
+    Player.containers = (updatable, drawable)
+    
+    print(f"Spawning Player at: ({x}, {y})")
     newPlayer = Player(x, y)
+
+    #newPlayer.containers = (updatable, drawable)
 
     while (True):
         for event in pygame.event.get():
@@ -31,8 +39,13 @@ def main():
 
         screen.fill("black")
 
-        newPlayer.draw(screen)
-        newPlayer.update(dt)
+        #newPlayer.draw(screen)
+        #newPlayer.update(dt)
+
+        updatable.update(dt)
+
+        for item in drawable:
+            item.draw(screen)
 
         pygame.display.flip()
 
