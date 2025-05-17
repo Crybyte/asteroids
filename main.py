@@ -55,6 +55,10 @@ def main():
         updatable.update(dt)
 
         for rock in asteroids:
+            for shot in shots:
+                if rock.isBumping(shot):
+                    rock.kill()
+                    shot.kill()
             if rock.isBumping(newPlayer):
                 print("Game over!")
                 exit()
