@@ -57,7 +57,7 @@ def main():
         for rock in asteroids:
             for shot in shots:
                 if rock.isBumping(shot):
-                    rock.kill()
+                    rock.split()
                     shot.kill()
             if rock.isBumping(newPlayer):
                 print("Game over!")
